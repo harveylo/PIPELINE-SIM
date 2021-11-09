@@ -2,6 +2,7 @@ package instructions.cat1;
 
 import disassembler.Disassembler;
 import instructions.Command;
+import instructions.R2IInstruction;
 import util.Masks;
 import util.ProgramCounter;
 import util.Register;
@@ -9,7 +10,7 @@ import util.Register;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ShiftLeftLogic implements Command {
+public class ShiftLeftLogic implements Command, R2IInstruction {
     private static final int category = 1;
     private static final int opCode = 8;
     private static final String name = "SLL";
@@ -60,6 +61,15 @@ public class ShiftLeftLogic implements Command {
     @Override
     public String getInstruction() {
         return instruction;
+    }
+    @Override
+    public int getRs() {
+        return rt;
+    }
+
+    @Override
+    public int getRt() {
+        return rd;
     }
 
 }

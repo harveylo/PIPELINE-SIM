@@ -2,6 +2,7 @@ package instructions.cat1;
 
 import disassembler.Disassembler;
 import instructions.Command;
+import instructions.R2IInstruction;
 import util.MemoryData;
 import util.ProgramCounter;
 import util.Register;
@@ -9,7 +10,7 @@ import util.Register;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StoreWord implements Command {
+public class StoreWord implements Command, R2IInstruction {
     private static final int category = 1;
     private static final int opCode = 6;
     private static final String name = "SW";
@@ -31,8 +32,8 @@ public class StoreWord implements Command {
 
     @Override
     public void run() {
-        MemoryData.storeData(Register.getRegisterValue(base)+offset,Register.getRegisterValue(rt));
-        ProgramCounter.advancePC(4);
+        int address = Register.getRegisterValue(base)+offset;
+        Register.setRegisterValue(rt,address);
     }
 
     @Override
@@ -58,5 +59,14 @@ public class StoreWord implements Command {
     @Override
     public String getInstruction() {
         return instruction;
+    }
+    @Override
+    public int getRs() {
+        return base;
+    }
+
+    @Override
+    public int getRt() {
+        return rt;
     }
 }

@@ -3,13 +3,14 @@ package instructions.cat1;
 
 import disassembler.Disassembler;
 import instructions.Command;
+import instructions.R2IInstruction;
 import util.ProgramCounter;
 import util.Register;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class ShiftRightLogic implements Command {
+public class ShiftRightLogic implements Command, R2IInstruction {
     private final static int category = 1;
     private final static int opCode = 9;
     private final static String name = "SRL";
@@ -59,5 +60,14 @@ public class ShiftRightLogic implements Command {
     @Override
     public String getInstruction() {
         return instruction;
+    }
+    @Override
+    public int getRs() {
+        return rt;
+    }
+
+    @Override
+    public int getRt() {
+        return rd;
     }
 }

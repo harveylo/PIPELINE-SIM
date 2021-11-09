@@ -2,10 +2,9 @@ package scoreboard;
 
 import fuctional.*;
 import instructions.Command;
-import instructions.cat1.BranchEqual;
-import instructions.cat1.BranchGreaterZero;
-import instructions.cat1.BranchLessZero;
-import instructions.cat1.JumpRegister;
+import instructions.R2IInstruction;
+import instructions.R3Instruction;
+import instructions.cat1.*;
 import util.Register;
 
 import java.util.HashMap;
@@ -21,6 +20,7 @@ public class Scoreboard {
         over = true;
     }
 
+
     public static void initialize(){
         for(int i = 0;i<32;i++){
             registerStatus.put(i, Register.VACANT);
@@ -31,6 +31,12 @@ public class Scoreboard {
         functionalStatus.put(ALU2.name,new FunctionUnitStatus());
         functionalStatus.put(MEM.name,new FunctionUnitStatus());
         functionalStatus.put(WB.name,new FunctionUnitStatus());
+    }
+    public static void toWrite(int index,String fu){
+        registerStatus.put(index,fu);
+    }
+    public static void releaseR(int index){
+        registerStatus.put(index,Register.VACANT);
     }
     public void nextCycle(){
 
@@ -54,9 +60,15 @@ public class Scoreboard {
         return registerStatus.get(bg.rs).equals(Register.VACANT);
     }
 
-//    public static boolean isIssuableLW(Command command){
-//
-//    }
+    public static boolean isIssuableR2I(Command command){   //检查R2类型指令在issue时的WAW和RAW
+        R2IInstruction r2i = (R2IInstruction) command;
+        return registerStatus.get(r2i.getRs()).equals(Register.VACANT)&&registerStatus.get(r2i.getRt()).equals(Register.VACANT);
+    }
+
+    public static boolean isIssuableR3(Command command){ //检查R3类型指令在issue时的WAW和RAW
+        R3Instruction r3 = (R3Instruction) command;
+        return registerStatus.get(r3.getRd()).equals(Register.VACANT)&&registerStatus.get(r3.getRs()).equals(Register.VACANT)&&registerStatus.get(r3.getRt()).equals(Register.VACANT);
+    }
 }
 
 

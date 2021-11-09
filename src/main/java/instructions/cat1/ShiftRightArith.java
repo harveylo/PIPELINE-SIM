@@ -2,13 +2,14 @@ package instructions.cat1;
 
 import disassembler.Disassembler;
 import instructions.Command;
+import instructions.R2IInstruction;
 import util.ProgramCounter;
 import util.Register;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class ShiftRightArith implements Command {
+public class ShiftRightArith implements Command, R2IInstruction {
     private static final int category = 1;
     private static final int opCode = 10;
     private static final String name = "SRA";
@@ -59,5 +60,14 @@ public class ShiftRightArith implements Command {
     @Override
     public String getInstruction() {
         return instruction;
+    }
+    @Override
+    public int getRs() {
+        return rt;
+    }
+
+    @Override
+    public int getRt() {
+        return rd;
     }
 }

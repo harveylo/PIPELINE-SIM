@@ -16,4 +16,8 @@ public class TypeGetter {
     public static boolean useALU1(Command command){
         return command.getName().equals("SW")||command.getName().equals("LW");
     }
+    public static boolean is2R(Command command){
+        return command.getName().equals("ADDI")|| command.getName().equals("ANDI")|| command.getName().equals("XORI")|| command.getName().equals("ORI")||
+        command.getName().equals("SLL")||command.getName().equals("SRA")||command.getName().equals("SRL")||command.getName().equals("LW");
+    }
 }

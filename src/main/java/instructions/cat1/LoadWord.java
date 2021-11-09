@@ -3,6 +3,7 @@ package instructions.cat1;
 
 import disassembler.Disassembler;
 import instructions.Command;
+import instructions.R2IInstruction;
 import util.MemoryData;
 import util.ProgramCounter;
 import util.Register;
@@ -10,7 +11,7 @@ import util.Register;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LoadWord implements Command {
+public class LoadWord implements Command, R2IInstruction {
     private final static int category = 1;
     private final static int opCode = 7;
     private final static String name = "LW";
@@ -32,8 +33,7 @@ public class LoadWord implements Command {
 
     @Override
     public void run() {
-        Register.setRegisterValue(rt, MemoryData.loadData(Register.getRegisterValue(base)+offset));
-        ProgramCounter.advancePC(4);
+        Register.setRegisterValue(rt, Register.getRegisterValue(base)+offset);
     }
 
     @Override
@@ -59,5 +59,14 @@ public class LoadWord implements Command {
     @Override
     public String getInstruction() {
         return instruction;
+    }
+    @Override
+    public int getRs() {
+        return base;
+    }
+
+    @Override
+    public int getRt() {
+        return rt;
     }
 }
