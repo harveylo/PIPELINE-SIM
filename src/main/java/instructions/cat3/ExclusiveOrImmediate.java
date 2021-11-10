@@ -35,7 +35,7 @@ public class ExclusiveOrImmediate implements Command, R2IInstruction {
     @Override
     public void run() {
         Register.setRegisterValue(rt,Register.getRegisterValue(rs)^immediate);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override

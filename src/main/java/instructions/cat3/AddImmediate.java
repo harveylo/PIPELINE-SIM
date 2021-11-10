@@ -36,7 +36,7 @@ public class AddImmediate implements Command, R2IInstruction {
     public void run() {
         long result = (long)Register.getRegisterValue(rs)+immediate;
         if(!(result>Integer.MAX_VALUE|result<Integer.MIN_VALUE)) Register.setRegisterValue(rt,(int)result);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override

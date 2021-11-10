@@ -35,7 +35,7 @@ public class Or implements Command, R3Instruction {
     @Override
     public void run() {
         Register.setRegisterValue(rd,Register.getRegisterValue(rs)|Register.getRegisterValue(rt));
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override

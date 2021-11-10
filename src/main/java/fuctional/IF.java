@@ -17,7 +17,6 @@ public class IF {
     public static Command exeCommand;
 
 
-
     public static void setStall(boolean flag){
         stalled = flag;
     }
@@ -33,6 +32,7 @@ public class IF {
                 susCommand.run();
                 stalled=false;
                 exeCommand = susCommand;
+                susCommand = null;
             }
             return;
         }
@@ -45,6 +45,7 @@ public class IF {
         if(PreIssue.isFull()) return;
         Command command2 = MemoryCommand.getCommand(ProgramCounter.getPC());
         handleCommand(command2);
+        ProgramCounter.advancePC(4);
 
     }
 
@@ -62,6 +63,7 @@ public class IF {
         }
         if (command.getName().equals("BREAK")){
             broke = true;
+            exeCommand = command;
             Scoreboard.setOver();
             return true;
         }

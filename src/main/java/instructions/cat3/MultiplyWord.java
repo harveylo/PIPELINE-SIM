@@ -36,7 +36,7 @@ public class MultiplyWord implements Command, R3Instruction {
     public void run() {
         long tem = (long) Register.getRegisterValue(rs)*(long) Register.getRegisterValue(rt);
         Register.setRegisterValue(rd,(int)tem);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override

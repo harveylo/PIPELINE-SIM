@@ -38,7 +38,7 @@ public class SetLessThan implements Command, R3Instruction {
         int right = Register.getRegisterValue(rt);
         if(left<right) Register.setRegisterValue(rd,1);
         else Register.setRegisterValue(rd,0);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override

@@ -36,7 +36,6 @@ public class SubtractWord implements Command, R3Instruction {
     public void run() {
         long tem = (long) Register.getRegisterValue(rs)-(long) Register.getRegisterValue(rt);
         if(!(tem>Integer.MAX_VALUE||tem<Integer.MIN_VALUE)) Register.setRegisterValue(rd,(int)tem);
-        ProgramCounter.advancePC(4);
     }
 
     @Override

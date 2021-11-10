@@ -34,7 +34,7 @@ public class ShiftRightLogic implements Command, R2IInstruction {
     @Override
     public void run() {
         Register.setRegisterValue(rd,Register.getRegisterValue(rt)>>>sa);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ShiftRightLogic implements Command, R2IInstruction {
     public List<String> getParameters() {
         return parameters;
     }
-    private String instruction = null;
+    private String instruction;
     @Override
     public String getInstruction() {
         return instruction;

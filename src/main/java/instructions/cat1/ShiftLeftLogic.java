@@ -35,7 +35,7 @@ public class ShiftLeftLogic implements Command, R2IInstruction {
     @Override
     public void run() {
         Register.setRegisterValue(rd,Register.getRegisterValue(rt)<<sa);
-        ProgramCounter.advancePC(4);
+        
     }
 
     @Override
