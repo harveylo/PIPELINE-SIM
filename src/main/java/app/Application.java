@@ -6,6 +6,10 @@ import util.ProgramCounter;
 
 import java.io.*;
 
+/**
+ * On my honor, I have neither given nor received unauthorized aid on this assignment
+ */
+
 public class Application {
     public static void main(String[] args) {
         String inputPath;
@@ -22,12 +26,12 @@ public class Application {
             System.out.println(e.getMessage());
             return;
         }
-        try {
-            Disassembler.output();
-        } catch (FileNotFoundException e) {
-            System.out.println("Something wrong with the disassemble output");
-            e.printStackTrace();
-        }
+//        try {
+//            Disassembler.output();
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Something wrong with the disassemble output");
+//            e.printStackTrace();
+//        }
         int cycleCount=1;
         ProgramCounter.setPC(256);
         Scoreboard.initialize();
@@ -40,7 +44,7 @@ public class Application {
         }
         PrintStream original = System.out;
         System.setOut(ps);
-        while(Scoreboard.nextCycle()&&cycleCount<100){
+        while(Scoreboard.nextCycle()){
             Scoreboard.printCycle(cycleCount);
             cycleCount++;
         }

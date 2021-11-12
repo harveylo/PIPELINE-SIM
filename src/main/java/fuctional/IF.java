@@ -28,7 +28,12 @@ public class IF {
     public static void fetchInstruction(){
         if (broke) return;
         if(stalled) {
-            if (Scoreboard.isBranchOk(susCommand)){
+            if(susCommand.getName().equals("NOP")){
+                exeCommand = susCommand;
+                susCommand = null;
+                stalled=false;
+            }
+            else if (Scoreboard.isBranchOk(susCommand)){
                 susCommand.run();
                 stalled=false;
                 exeCommand = susCommand;
@@ -68,7 +73,12 @@ public class IF {
             return true;
         }
         if (command.getName().equals("NOP")){
-            exeCommand = command;
+            if(exeCommand!=null&&exeCommand.getName().equals("NOP")){
+                stalled = true;
+                susCommand = command;
+            }
+            else
+                exeCommand = command;
         }else {
             PreIssue.insert(command);
         }
