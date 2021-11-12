@@ -1,4 +1,4 @@
-package fuctional;
+package functional;
 
 import buffer.PreALU1;
 import buffer.PreMEM;

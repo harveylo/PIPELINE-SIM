@@ -1,8 +1,7 @@
-package fuctional;
+package functional;
 
 import buffer.PostMEM;
 import buffer.PreMEM;
-import instructions.Command;
 import util.MemoryData;
 
 public class MEM {

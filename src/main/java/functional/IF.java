@@ -1,8 +1,7 @@
-package fuctional;
+package functional;
 
 import buffer.PreIssue;
 import instructions.Command;
-import instructions.factories.CommandFactory;
 import scoreboard.Scoreboard;
 import util.MemoryCommand;
 import util.ProgramCounter;

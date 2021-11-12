@@ -31,12 +31,14 @@ public class Disassembler {
             if (command.getName().equals("BREAK")) break;
         }
         line = null;
+        MemoryData.startAddress = address;
         while ((line=bufferedReader.readLine())!=null){
             long tem = Long.valueOf(line,2);
             int lineDate = (int) tem;
             MemoryData.storeData(address,lineDate);
-            address+=4;
             rawData.add(line);
+            MemoryData.endAddress = address;
+            address+=4;
         }
     }
     public static void output() throws FileNotFoundException {
@@ -57,12 +59,10 @@ public class Disassembler {
             address+=4;
             System.out.println(sb.toString());
         }
-        MemoryData.startAddress = address;
         for(String s: rawData){
             sb.delete(0,sb.length());
             sb.append(s).append('\t').append(address).append('\t').append(MemoryData.loadData(address));
             System.out.println(sb.toString());
-            MemoryData.endAddress=address;
             address+=4;
         }
         System.setOut(original);

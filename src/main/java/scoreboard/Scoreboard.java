@@ -1,7 +1,7 @@
 package scoreboard;
 
 import buffer.*;
-import fuctional.*;
+import functional.*;
 import instructions.Command;
 import instructions.R2IInstruction;
 import instructions.R3Instruction;

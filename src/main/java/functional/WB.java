@@ -1,4 +1,4 @@
-package fuctional;
+package functional;
 
 import buffer.PostALU2;
 import buffer.PostMEM;
