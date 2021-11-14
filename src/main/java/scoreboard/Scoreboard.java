@@ -103,8 +103,8 @@ public class Scoreboard {
         System.out.println("Cycle:"+cycle);
         System.out.println();
         System.out.println("IF Unit:");
-        System.out.println("\tWaiting Instruction: "+(IF.susCommand==null?"":"["+IF.susCommand.getInstruction()+"]"));
-        System.out.println("\tExecuted Instruction: "+(IF.exeCommand==null?"":"["+IF.exeCommand.getInstruction()+"]"));
+        System.out.println("\tWaiting Instruction:"+(IF.susCommand==null?"":" ["+IF.susCommand.getInstruction()+"]"));
+        System.out.println("\tExecuted Instruction:"+(IF.exeCommand==null?"":" ["+IF.exeCommand.getInstruction()+"]"));
         System.out.println("Pre-Issue Queue:");
         List<Command> commandList = PreIssue.getInstructionPool();
         printQueue(commandList,4);
